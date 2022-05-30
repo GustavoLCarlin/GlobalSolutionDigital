@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="content">
+		<!-- FORM -->
+		<h:form enctype="multipart/form-data">
+		    <p:messages id="messages" closable="true">
+	            <p:autoUpdate/>
+	        </p:messages>
+			<p:card style="width: 25em; margin: 1em auto">
+				<f:facet name="title">Create Account</f:facet>
+
+				<div class="ui-fluid">
+				
+				
+					<div class="p-field">
+						<label for="image">Image File: </label>
+						<p:fileUpload 
+							id="image" 
+							mode="simple" 
+							skinSimple="true" 
+							value="#{visitanteBean.image}"
+						/>
+					</div>
+					
+					<div class="p-field">
+						<label for="nome">Nome</label>
+						<p:inputText 
+							id="nome" 
+							type="text" 
+							value="#{visitanteBean.visitante.nm_visitante}" 
+						 >
+						 	<f:validateLength minimum="2"/>
+						 </p:inputText>
+					</div>
+					<div class="p-field">
+						<label for="dtnasc">Data de nascimento</label>
+						<p:datePicker
+							id="dtnasc" 
+							value="#{visitanteBean.visitante.dt_nasc}"
+						>
+								<f:ajax event="blur" render="messages" />	
+						</p:datePicker>
+					</div>
+					<div class="p-field">
+						<label for="cpf">CPF</label>
+						<p:inputText 
+							id="cpf" 
+							type="text" 
+							value="#{visitanteBean.visitante.nr_cpf}" 
+						 >
+						 	<f:validateLength minimum="12" maximum="12"/>
+						 </p:inputText>
+					</div>
+					<div class="p-field">
+						<label for="rg">RG</label>
+						<p:inputText 
+							id="rg" 
+							type="text" 
+							value="#{visitanteBean.visitante.nr_rg}" 
+						 >
+						 	<f:validateLength minimum="11" maximum="11"/>
+						 </p:inputText>
+					</div>
+					<div class="p-field">
+						<label for="nrg">Digito RG</label>
+						<p:inputText 
+							id="nrg" 
+							type="text" 
+							value="#{visitanteBean.visitante.nm_digito_rg}" 
+						 >
+						 	<f:validateLength minimum="1" maximum="1"/>
+						 </p:inputText>
+					</div>
+					<div class="p-field">
+						<label for="dtcadas">Data de cadastro</label>
+						<p:datePicker
+							id="dtcadas" 
+							value="#{visitanteBean.visitante.dt_cadastro}"
+						>
+								<f:ajax event="blur" render="messages" />	
+						</p:datePicker>
+					</div>
+					
+					
+				
+				</div>
+
+				<f:facet name="footer">
+					<p:commandButton icon="pi pi-check" value="Save"
+						action="#{visitanteBean.save()}" />
+				</f:facet>
+			</p:card>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+
+
+
+
+</html>

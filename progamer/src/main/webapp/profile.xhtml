@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="content">
+		<p:card style="width: 25em; margin: 1em auto">
+
+			<p>Visitante</p>
+			<p:dataTable var="visitante" value="#{visitanteBean.listAll()}" editable="true">
+
+				<p:column style="width: 30%;">
+					<img src="#{request.contextPath}#{visitante.imagePath}"/>
+				</p:column>
+
+				<p:column style="width: 70%;">
+
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{visitante.nm_visitante}" style="font-size: 20px" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{visitante.nm_visitante}" style="font-size: 20px" />
+						</f:facet>
+					</p:cellEditor>
+					<h:outputText value="#{visitante.dt_nasc}" />
+					<br/>
+					<h:outputText value="#{visitante.nr_cpf}" />
+					<br/>
+					<h:outputText value="#{visitante.nr_rg}" />
+					<br/>
+					<h:outputText value="#{visitante.nm_digito_rg}" />
+					<br/>
+					<h:outputText value="#{visitante.dt_cadastro}" />
+					
+
+
+				</p:column>
+				
+
+			</p:dataTable>
+
+		</p:card>
+	</ui:define>
+</ui:composition>
+
+
+</html>
